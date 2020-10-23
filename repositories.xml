@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE respositories SYSTEM "/dtd/repositories.dtd">
+<repositories>
+    <repo quality="experimental" status="unoffical">
+        <name>underworld</name>
+        <description lang="en">DakEnviy's Gentoo Overlay</description>
+        <homepage>https://github.com/DakEnviy/underworld-overlay</homepage>
+        <owner type="person">
+            <name>Mikhail Golbakh</name>
+            <email>golbah@yandex.ru</email>
+        </owner>
+        <source type="git">https://github.com/DakEnviy/underworld-overlay</source>
+    </repo>
+</repositories>
