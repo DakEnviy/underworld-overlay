@@ -1,9 +1,7 @@
-# Copyright 1999-2020 Gentoo Foundation
+# Copyright 2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Copyright 2019 Rabenda
-
-EAPI=6
+EAPI=7
 
 inherit eutils xdg-utils
 
@@ -20,28 +18,27 @@ DEPEND="sys-fs/fuse:0"
 QA_PRESTRIPPED="/opt/jetbrains-toolbox/jetbrains-toolbox"
 
 src_compile() {
-        ./"${PN}" --appimage-extract
+	./"${PN}" --appimage-extract
 }
 
 src_install() {
-        keepdir /opt/jetbrains-toolbox
-        insinto /opt/jetbrains-toolbox
-        doins jetbrains-toolbox
-        fperms +x /opt/jetbrains-toolbox/jetbrains-toolbox
+	keepdir /opt/jetbrains-toolbox
+	insinto /opt/jetbrains-toolbox
+	doins jetbrains-toolbox
+	fperms +x /opt/jetbrains-toolbox/jetbrains-toolbox
 
-#        newicon squashfs-root/jetbrains-toolbox.svg "${PN}.svg"
+	# newicon squashfs-root/jetbrains-toolbox.svg "${PN}.svg"
 
-        make_wrapper "${PN}" /opt/jetbrains-toolbox/jetbrains-toolbox
+	make_wrapper "${PN}" /opt/jetbrains-toolbox/jetbrains-toolbox
 
-        insinto /usr/share/applications
-        doins "${FILESDIR}/${PN}.desktop"
+	insinto /usr/share/applications
+	doins "${FILESDIR}/${PN}.desktop"
 }
 
 pkg_postinst() {
-        xdg_desktop_database_update
+	xdg_desktop_database_update
 }
 
 pkg_postrm() {
-        xdg_desktop_database_update
+	xdg_desktop_database_update
 }
-
