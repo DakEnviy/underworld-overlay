@@ -27,7 +27,7 @@ src_install() {
 	doins jetbrains-toolbox
 	fperms +x /opt/jetbrains-toolbox/jetbrains-toolbox
 
-	# newicon squashfs-root/jetbrains-toolbox.svg "${PN}.svg"
+	newicon squashfs-root/jetbrains-toolbox.svg "${PN}.svg"
 
 	make_wrapper "${PN}" /opt/jetbrains-toolbox/jetbrains-toolbox
 
