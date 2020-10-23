@@ -3,9 +3,11 @@
 
 EAPI=7
 
+# This must be placed before 'inherit chromium-2'
+CHROMIUM_LANGS="cs de en-US es fr it ja pt-BR pt-PT ru tr uk zh-CN zh-TW"
+
 inherit chromium-2 unpacker pax-utils xdg-utils
 
-CHROMIUM_LANGS="cs de en-US es fr it ja pt-BR pt-PT ru tr uk zh-CN zh-TW"
 RESTRICT="bindist mirror strip"
 
 MY_PVR="${PVR/-r/-}"
