@@ -1,10 +1,11 @@
 # Copyright 1999-2020 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-CHROMIUM_LANGS="cs de en-US es fr it ja pt-BR pt-PT ru tr uk zh-CN zh-TW"
+EAPI=7
+
 inherit chromium-2 unpacker pax-utils xdg-utils
 
+CHROMIUM_LANGS="cs de en-US es fr it ja pt-BR pt-PT ru tr uk zh-CN zh-TW"
 RESTRICT="bindist mirror strip"
 
 MY_PV="${PV/_p/-}"
@@ -17,7 +18,7 @@ SRC_URI="
 	amd64? ( https://repo.yandex.ru/yandex-browser/deb/pool/main/y/yandex-browser-beta/yandex-browser-beta_${MY_PV}_amd64.deb -> ${P}.deb )
 "
 KEYWORDS="~amd64"
-IUSE="ffmpeg-codecs"
+IUSE=""
 
 RDEPEND="
 	dev-libs/expat
@@ -51,9 +52,6 @@ RDEPEND="
 	x11-libs/pango[X]
 	x11-misc/xdg-utils
 	sys-libs/libudev-compat
-	ffmpeg-codecs? (
-		=www-plugins/yandex-browser-ffmpeg-codecs-${PV/%_p*/}
-	)
 "
 DEPEND="
 	>=dev-util/patchelf-0.9
