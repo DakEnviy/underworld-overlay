@@ -20,7 +20,7 @@ SRC_URI="
 	amd64? ( https://repo.yandex.ru/yandex-browser/deb/pool/main/y/yandex-browser-beta/yandex-browser-beta_${MY_PVR}_amd64.deb -> ${P}.deb )
 "
 KEYWORDS="~amd64"
-IUSE=""
+IUSE="+ffmpeg-codecs"
 
 RDEPEND="
 	dev-libs/expat
@@ -124,10 +124,12 @@ src_install() {
 
 pkg_postinst() {
 	xdg_desktop_database_update
-	if ! use ffmpeg-codecs; then
-		ewarn "For a complete support of video\audio in the HTML5 format"
-		ewarn "emerge an ebuild 'www-plugins/yandex-browser-ffmpeg-codec'."
-		ewarn "For more info see: https://yandex.ru/support/browser-beta/working-with-files/video.html#problems__video-linux"
+	if use ffmpeg-codecs; then
+		ewarn "${ESYSROOT}"
+		ewarn "${SYSROOT}"
+	else
+		ewarn "For a complete support of video audio in the HTML5 format"
+		ewarn "see: https://yandex.ru/support/browser-beta/working-with-files/video.html#problems__video-linux"
 	fi
 }
 
