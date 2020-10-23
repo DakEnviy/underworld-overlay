@@ -54,6 +54,9 @@ RDEPEND="
 	x11-libs/pango[X]
 	x11-misc/xdg-utils
 	sys-libs/libudev-compat
+	ffmpeg-codecs? (
+		app-misc/jq
+	)
 "
 DEPEND="
 	>=dev-util/patchelf-0.9
@@ -125,8 +128,7 @@ src_install() {
 pkg_postinst() {
 	xdg_desktop_database_update
 	if use ffmpeg-codecs; then
-		ewarn "${ESYSROOT}"
-		ewarn "${SYSROOT}"
+		bash "/${YANDEX_HOME}/update-ffmpeg"
 	else
 		ewarn "For a complete support of video audio in the HTML5 format"
 		ewarn "see: https://yandex.ru/support/browser-beta/working-with-files/video.html#problems__video-linux"
