@@ -3,7 +3,9 @@
 
 EAPI=7
 
-inherit meson
+PYTHON_COMPAT=( python{3_8,3_9} )
+
+inherit meson python-r1
 
 DESCRIPTION="A 15-band equalizer for PulseAudio"
 HOMEPAGE="https://github.com/pulseaudio-equalizer-ladspa/equalizer"
@@ -13,15 +15,17 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="
+	${PYTHON_DEPS}
+	>=dev-python/pygobject-3.30[${PYTHON_USEDEP}]
 	x11-libs/gtk+:3
-	dev-python/pygobject:3
 	media-sound/pulseaudio
 	media-plugins/swh-plugins
 	sys-devel/bc
 "
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-util/ninja
 	>=dev-util/meson-0.46
