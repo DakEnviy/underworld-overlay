@@ -17,9 +17,9 @@ KEYWORDS="~amd64"
 IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-DEPEND="
+RDEPEND="
 	${PYTHON_DEPS}
-	>=dev-python/pygobject:3
+	dev-python/pygobject:3
 	x11-libs/gtk+:3
 	media-sound/pulseaudio
 	media-plugins/swh-plugins
