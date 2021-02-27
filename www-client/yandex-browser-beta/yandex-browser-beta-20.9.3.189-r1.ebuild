@@ -19,7 +19,7 @@ SLOT="0"
 SRC_URI="
 	amd64? (
 		https://repo.yandex.ru/yandex-browser/deb/pool/main/y/yandex-browser-beta/yandex-browser-beta_${MY_PVR}_amd64.deb -> ${P}.deb
-		https://raw.githubusercontent.com/DakEnviy/underworld-overlay/master/distfiles/yandex-browser-beta_${MY_PVR}_amd64.deb -> ${P}.deb
+		https://github.com/DakEnviy/underworld-overlay/raw/master/distfiles/yandex-browser-beta_${MY_PVR}_amd64.deb -> ${P}.deb
 	)
 "
 KEYWORDS="~amd64"
