@@ -30,9 +30,14 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
 
-DEPEND=""
+DEPEND="
+	x11-themes/hicolor-icon-theme
+"
 RDEPEND="${DEPEND}"
-BDEPEND=""
+BDEPEND="
+	sys-fs/fuse
+	x11-themes/hicolor-icon-theme
+"
 
 S="${WORKDIR}"
 
