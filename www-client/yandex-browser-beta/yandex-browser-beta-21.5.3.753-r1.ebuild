@@ -75,7 +75,11 @@ src_unpack() {
 }
 
 src_prepare() {
-	rm usr/bin/${PN} || die
+	# this was here for a long time (from the first version of the ebuild),
+	# but now this prevents installing a symlink of the yandex-browser in /usr/bin
+	# and breaks .desktop files
+	#
+	# rm usr/bin/${PN} || die
 
 	rm -r etc || die
 
