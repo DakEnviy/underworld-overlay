@@ -54,17 +54,15 @@ src_unpack()
 		extract_sh "$T/$MY_P"/st-stlink-udev-rules-*-linux-noarch.sh "$T/stlink" && \
 			extract_sh "$T/$MY_P"/st-stlink-server.*-linux-amd64.install.sh "$T/stlink" && \
 			mkdir -p "$S/stlink" && \
-			mv "$T/stlink/stlink-server" "$S/stlink" && \
-			tar xf "$T/stlink"/st-stlink-udev-rules-*-linux-all.tar.gz -C "$T/stlink" && \
-			mv "$T/stlink/st-stlink-udev-rules.sw" "$S/stlink/stlink-udev-rules.tar.gz" \
+			mv "$T/stlink"/*.rules "$S/stlink" && \
+			mv "$T/stlink/stlink-server" "$S/stlink" \
 			|| die "Failed to unpack stlink"
 	fi
 
 	if use jlink; then
 		extract_sh "$T/$MY_P"/segger-jlink-udev-rules-*-linux-noarch.sh "$T/jlink" && \
 			mkdir -p "$S/jlink" && \
-			tar xf "$T/jlink"/segger-jlink-udev-rules-*-linux-noarch.tar.gz -C "$T/jlink" && \
-			mv "$T/jlink/segger-jlink-udev-rules.sw" "$S/jlink/jlink-udev-rules.tar.gz" \
+			mv "$T/jlink"/*.rules "$S/jlink" \
 			|| die "Failed to unpack jlink"
 	fi
 }
@@ -78,14 +76,14 @@ src_install()
 	make_desktop_entry "/opt/$PN/$PN" "STM32CubeIDE" "/opt/$PN/icon.xpm"
 
 	if use stlink; then
-		tar xf "$S/stlink/stlink-udev-rules.tar.gz" -C "$D" \
+		dosbin "$S/stlink/stlink-server" && \
+			udev_dorules "$S/stlink"/*.rules \
 			|| die "Failed to install stlink"
 		udev_reload
-		dosbin "$S/stlink/stlink-server"
 	fi
 
 	if use jlink; then
-		tar xf "$S/jlink/jlink-udev-rules.tar.gz" -C "$D" \
+		udev_dorules "$S/jlink"/*.rules \
 			|| die "Failed to install jlink"
 		udev_reload
 	fi
