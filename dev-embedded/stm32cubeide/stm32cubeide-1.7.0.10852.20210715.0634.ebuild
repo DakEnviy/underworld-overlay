@@ -11,7 +11,7 @@ MY_P="st-stm32cubeide_${MY_PV}_amd64"
 DESCRIPTION="Free all-in-one STM32 development tool"
 HOMEPAGE="https://www.st.com/content/st_com/en/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-ides/stm32cubeide.html"
 SRC_URI="en.${MY_P}.sh_v$(ver_cut 1-3).zip"
-RESTRICT="fetch strip binchecks"
+RESTRICT="fetch strip" # binchecks
 
 LICENSE=""
 SLOT="0"
