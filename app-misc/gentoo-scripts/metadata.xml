@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>golbah@yandex.ru</email>
 		<name>Mikahil Golbakh</name>
+		<email>golbah@yandex.ru</email>
 	</maintainer>
 	<use>
 		<flag name="qtop">Enable qtop command</flag>
@@ -12,4 +12,9 @@
 		<flag name="eupd">Enable eupd command</flag>
 		<flag name="rcms">Enable rcms command</flag>
 	</use>
+	<upstream>
+		<changelog>https://github.com/DakEnviy/gentoo-scripts/releases</changelog>
+		<bugs-to>https://github.com/DakEnviy/gentoo-scripts/issues</bugs-to>
+		<remote-id type="github">https://github.com/DakEnviy/gentoo-scripts</remote-id>
+	</upstream>
 </pkgmetadata>

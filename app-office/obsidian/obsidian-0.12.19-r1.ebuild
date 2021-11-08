@@ -24,7 +24,7 @@ SRC_URI="https://github.com/obsidianmd/obsidian-releases/releases/download/v${PV
 LICENSE="Obsidian-EULA"
 
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="

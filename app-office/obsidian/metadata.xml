@@ -5,4 +5,12 @@
 		<email>golbah@yandex.ru</email>
 		<name>Mikahil Golbakh</name>
 	</maintainer>
+	<longdescription lang="en">
+		Obsidian is a powerful knowledge base on top of a local folder of plain text Markdown files.
+	</longdescription>
+	<upstream>
+		<changelog>https://forum.obsidian.md/c/announcements</changelog>
+		<bugs-to>https://forum.obsidian.md/c/bug-reports</bugs-to>
+		<remote-id type="github">https://github.com/obsidianmd/obsidian-releases</remote-id>
+	</upstream>
 </pkgmetadata>

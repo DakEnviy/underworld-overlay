@@ -5,4 +5,12 @@
 		<email>golbah@yandex.ru</email>
 		<name>Mikahil Golbakh</name>
 	</maintainer>
+	<longdescription lang="en">
+		A LADSPA based multiband equalizer approach for getting better sound out of pulseaudio. This equalizer clearly is more potent than the (deprecated ?), optional one from Pulseaudio.
+	</longdescription>
+	<upstream>
+		<changelog>https://github.com/pulseaudio-equalizer-ladspa/equalizer/releases</changelog>
+		<bugs-to>https://github.com/pulseaudio-equalizer-ladspa/equalizer/issues</bugs-to>
+		<remote-id type="github">https://github.com/pulseaudio-equalizer-ladspa/equalizer</remote-id>
+	</upstream>
 </pkgmetadata>

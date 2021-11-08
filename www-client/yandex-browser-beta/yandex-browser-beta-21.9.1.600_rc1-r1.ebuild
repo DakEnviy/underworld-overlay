@@ -10,16 +10,16 @@ inherit chromium-2 unpacker pax-utils xdg-utils
 
 RESTRICT="bindist mirror strip"
 
-MY_PVR="${PVR/-r/-}"
+MY_PV="${PV/_rc/-}"
 
 DESCRIPTION="The web browser from Yandex"
 HOMEPAGE="https://browser.yandex.ru/beta/"
 LICENSE="Yandex-EULA"
 SLOT="0"
 SRC_URI="
-	amd64? ( https://repo.yandex.ru/yandex-browser/deb/pool/main/y/yandex-browser-beta/yandex-browser-beta_${MY_PVR}_amd64.deb -> ${P}.deb )
+	amd64? ( https://repo.yandex.ru/yandex-browser/deb/pool/main/y/yandex-browser-beta/yandex-browser-beta_${MY_PV}_amd64.deb -> ${P}.deb )
 "
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="+ffmpeg-codecs"
 
 RDEPEND="

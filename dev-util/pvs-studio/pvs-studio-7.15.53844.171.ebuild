@@ -5,9 +5,9 @@ EAPI=7
 
 inherit bash-completion-r1 eutils
 
-DESCRIPTION="Static Code Analyzer for C, C++ and C#"
-HOMEPAGE="https://www.viva64.com/en/pvs-studio/"
-SRC_URI="https://files.viva64.com/${P}-x86_64.tgz"
+DESCRIPTION="Static Code Analyzer for C, C++"
+HOMEPAGE="https://pvs-studio.com/en/pvs-studio/"
+SRC_URI="https://cdn.pvs-studio.com/${P}-x86_64.tgz"
 
 LICENSE="free-noncomm"
 SLOT="0"
