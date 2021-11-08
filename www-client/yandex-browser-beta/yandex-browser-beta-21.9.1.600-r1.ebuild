@@ -1,4 +1,4 @@
-# Copyright 2020 Gentoo Authors
+# Copyright 2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -134,7 +134,7 @@ pkg_postinst() {
 	if use ffmpeg-codecs; then
 		bash "/${YANDEX_HOME}/update-ffmpeg"
 	else
-		ewarn "For a complete support of video audio in the HTML5 format"
+		ewarn "For a complete support for video and audio in the HTML5 format"
 		ewarn "see: https://yandex.ru/support/browser-beta/working-with-files/video.html#problems__video-linux"
 	fi
 }

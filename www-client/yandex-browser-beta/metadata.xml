@@ -12,4 +12,7 @@
 	<longdescription lang="en">
 		Yandex Browser is a browser that combines a minimal design with sophisticated technology to make the web faster, safer, and easier.
 	</longdescription>
+	<use>
+		<flag name="ffmpeg-codecs">Add support for video and audio in the HTML5 format</flag>
+	</use>
 </pkgmetadata>

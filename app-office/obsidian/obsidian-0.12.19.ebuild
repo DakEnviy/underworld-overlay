@@ -1,4 +1,4 @@
-# Copyright 2020 Gentoo Authors
+# Copyright 2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,10 +18,7 @@ _DESKTOP="${_APPROOT}/${PN}.desktop"
 _USR_DIR="${_APPROOT}/usr"
 _ICONS_DIR="${_USR_DIR}/share/icons"
 
-
-DESCRIPTION="
-	Obsidian is a powerful knowledge base that works on top of a local folder of plain text Markdown files
-"
+DESCRIPTION="Obsidian is a powerful knowledge base that uses Markdown files"
 HOMEPAGE="https://obsidian.md"
 SRC_URI="https://github.com/obsidianmd/obsidian-releases/releases/download/v${PV}/Obsidian-${PV}.AppImage -> ${_APPIMAGE}"
 LICENSE="Obsidian-EULA"
@@ -80,4 +77,3 @@ pkg_postinst() {
 	xdg_icon_cache_update
 	xdg_desktop_database_update
 }
-

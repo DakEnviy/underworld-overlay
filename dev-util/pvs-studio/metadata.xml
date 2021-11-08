@@ -2,7 +2,10 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>golbah@yandex.ru</email>
-		<name>Mikahil Golbakh</name>
+		<email>eridan200@mail.ru</email>
+		<name>Eridan Domoratskiy</name>
 	</maintainer>
+	<use>
+		<flag name="bash-completion">Add bash completions</flag>
+	</use>
 </pkgmetadata>
