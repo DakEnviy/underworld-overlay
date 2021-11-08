@@ -18,7 +18,6 @@ DEPEND="
 	)
 	esync? (
 		sys-apps/portage
-		app-portage/layman
 	)
 	eclt? (
 		sys-apps/portage
@@ -26,7 +25,6 @@ DEPEND="
 	)
 	eupd? (
 		sys-apps/portage
-		app-portage/layman
 	)
 	rcms? (
 		sys-apps/openrc
@@ -56,4 +54,3 @@ src_install() {
 		dobin rcms
 	fi
 }
-
