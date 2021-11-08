@@ -1,4 +1,4 @@
-# Underworld - the DakEnviy's gentoo overlay
+# Underworld - The DakEnviy's gentoo overlay
 
 ## Installation
 
