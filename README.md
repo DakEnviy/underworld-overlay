@@ -9,20 +9,19 @@ To use this method, make sure you've emerged `app-eselect/eselect-repository` be
 To add the repo, just run:
 
 ```
-# eselect repository add underworld git https://github.com/DakEnviy/underworld-overlay.git
+# eselect repository enable underworld
 ```
 
-Then run `emaint sync -r underworld` to sync it.
+Then run `emaint sync -r underworld` or `emerge --sync` to sync it.
 
 ### Using layman (app-portage/layman)
 
-Add the repo using layman:
+Add the repo and sync it using layman:
 
 ```
-# layman -o https://raw.githubusercontent.com/DakEnviy/underworld-overlay/master/repositories.xml -f -a underworld
+# layman -a underworld
+# layman -s underworld
 ```
-
-Then run `layman -s underworld`
 
 ### Using local overlay
 
