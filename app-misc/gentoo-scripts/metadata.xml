@@ -11,6 +11,7 @@
 		<flag name="eclt">Enable eclt command</flag>
 		<flag name="eupd">Enable eupd command</flag>
 		<flag name="rcms">Enable rcms command</flag>
+		<flag name="auto-sudo">Run all commands with sudo automatically</flag>
 	</use>
 	<upstream>
 		<changelog>https://github.com/DakEnviy/gentoo-scripts/releases</changelog>

@@ -1,0 +1,60 @@
+diff --git a/scripts/eclt b/scripts/eclt
+index 2de352a..a4583aa 100755
+--- a/scripts/eclt
++++ b/scripts/eclt
+@@ -1,6 +1,6 @@
+ #!/bin/bash
+ 
+-AUTO_SUDO=0
++AUTO_SUDO=1
+ EMERGE_LOG_FILE="/var/log/emerge.log"
+ 
+ function asudo() {
+diff --git a/scripts/esync b/scripts/esync
+index 9a93c9e..c525281 100755
+--- a/scripts/esync
++++ b/scripts/esync
+@@ -1,6 +1,6 @@
+ #!/bin/bash
+ 
+-AUTO_SUDO=0
++AUTO_SUDO=1
+ 
+ function asudo() {
+     if [[ "$AUTO_SUDO" -eq 1 ]]; then
+diff --git a/scripts/eupd b/scripts/eupd
+index 3d2faf3..367d6d0 100755
+--- a/scripts/eupd
++++ b/scripts/eupd
+@@ -1,6 +1,6 @@
+ #!/bin/bash
+ 
+-AUTO_SUDO=0
++AUTO_SUDO=1
+ 
+ function asudo() {
+     if [[ "$AUTO_SUDO" -eq 1 ]]; then
+diff --git a/scripts/qtop b/scripts/qtop
+index e0bb36f..7fbb64f 100755
+--- a/scripts/qtop
++++ b/scripts/qtop
+@@ -1,6 +1,6 @@
+ #!/bin/bash
+ 
+-AUTO_SUDO=0
++AUTO_SUDO=1
+ EMERGE_LOG_FILE="/var/log/emerge.log"
+ 
+ function asudo() {
+diff --git a/scripts/rcms b/scripts/rcms
+index 96c6ab1..98fc57e 100755
+--- a/scripts/rcms
++++ b/scripts/rcms
+@@ -1,6 +1,6 @@
+ #!/bin/bash
+ 
+-AUTO_SUDO=0
++AUTO_SUDO=1
+ 
+ function asudo() {
+     if [[ "$AUTO_SUDO" -eq 1 ]]; then

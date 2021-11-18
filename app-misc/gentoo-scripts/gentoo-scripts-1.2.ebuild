@@ -10,7 +10,7 @@ SRC_URI="https://github.com/DakEnviy/gentoo-scripts/archive/refs/tags/v${PV}.tar
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+qtop +esync +eclt +eupd +rcms"
+IUSE="+qtop +esync +eclt +eupd +rcms auto-sudo"
 
 DEPEND="
 	qtop? (
@@ -29,9 +29,20 @@ DEPEND="
 	rcms? (
 		sys-apps/openrc
 	)
+	auto-sudo? (
+		app-admin/sudo
+	)
 "
 RDEPEND="${DEPEND}"
 BDEPEND=""
+
+src_prepare() {
+	if use auto-sudo; then
+		eapply "${FILESDIR}/enable-auto-sudo.patch"
+	fi
+
+	eapply_user
+}
 
 src_install() {
 	if use qtop; then
