@@ -46,22 +46,22 @@ src_prepare() {
 
 src_install() {
 	if use qtop; then
-		dobin qtop
+		dobin scripts/qtop
 	fi
 
 	if use esync; then
-		dobin esync
+		dobin scripts/esync
 	fi
 
 	if use eclt; then
-		dobin eclt
+		dobin scripts/eclt
 	fi
 
 	if use eupd; then
-		dobin eupd
+		dobin scripts/eupd
 	fi
 
 	if use rcms; then
-		dobin rcms
+		dobin scripts/rcms
 	fi
 }
