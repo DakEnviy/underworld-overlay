@@ -38,7 +38,7 @@ BDEPEND=""
 
 src_prepare() {
 	if use auto-sudo; then
-		eapply "${FILESDIR}/enable-auto-sudo.patch"
+		sed -i "s/AUTO_SUDO=0/AUTO_SUDO=1/g" scripts/*
 	fi
 
 	eapply_user
