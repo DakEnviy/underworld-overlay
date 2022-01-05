@@ -1,4 +1,4 @@
-# Copyright 2021 Gentoo Authors
+# Copyright 2021-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,7 +10,7 @@ SRC_URI="https://github.com/DakEnviy/gentoo-scripts/archive/refs/tags/v${PV}.tar
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+qtop +esync +eclt +eupd +rcms auto-sudo"
+IUSE="+qtop +esync +eclt +eupd +rcms +enewyear auto-sudo"
 
 DEPEND="
 	qtop? (
@@ -28,6 +28,9 @@ DEPEND="
 	)
 	rcms? (
 		sys-apps/openrc
+	)
+	enewyear? (
+		sys-apps/portage
 	)
 	auto-sudo? (
 		app-admin/sudo
@@ -63,5 +66,9 @@ src_install() {
 
 	if use rcms; then
 		dobin scripts/rcms
+	fi
+
+	if use enewyear; then
+		dobin scripts/enewyear
 	fi
 }
