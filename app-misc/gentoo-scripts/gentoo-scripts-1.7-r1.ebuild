@@ -78,4 +78,7 @@ src_install() {
 	if use qorph; then
 		dobin scripts/qorph
 	fi
+
+	insinto "/etc/${PN}"
+	newins "${FILESDIR}/.qorphignore" ".qorphignore"
 }
