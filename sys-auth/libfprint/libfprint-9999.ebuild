@@ -5,9 +5,10 @@ EAPI=8
 
 inherit meson udev
 
+BRANCH="unstable"
 DESCRIPTION="Library to add support for consumer fingerprint readers"
 HOMEPAGE="https://github.com/Infinytum/libfprint/tree/unstable"
-SRC_URI="https://github.com/Infinytum/libfprint/archive/refs/heads/unstable.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/Infinytum/libfprint/archive/refs/heads/${BRANCH}.tar.gz -> ${P}.tar.gz"
 
 
 LICENSE="LGPL-2.1+"
@@ -38,6 +39,8 @@ BDEPEND="
 	gtk-doc? ( dev-util/gtk-doc )
 	introspection? ( dev-libs/gobject-introspection )
 "
+
+S="${WORKDIR}/${PN}-${BRANCH}"
 
 src_configure() {
 	local emesonargs=(
