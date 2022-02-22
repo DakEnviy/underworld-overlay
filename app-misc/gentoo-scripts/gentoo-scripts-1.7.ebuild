@@ -10,7 +10,7 @@ SRC_URI="https://github.com/DakEnviy/gentoo-scripts/archive/refs/tags/v${PV}.tar
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+qtop +esync +eclt +eupd +rcms +enewyear auto-sudo"
+IUSE="+qtop +esync +eclt +eupd +rcms +enewyear +qorph auto-sudo"
 
 DEPEND="
 	qtop? (
@@ -31,6 +31,9 @@ DEPEND="
 	)
 	enewyear? (
 		sys-apps/portage
+	)
+	qorph? (
+		app-portage/gentoolkit
 	)
 	auto-sudo? (
 		app-admin/sudo
@@ -70,5 +73,9 @@ src_install() {
 
 	if use enewyear; then
 		dobin scripts/enewyear
+	fi
+
+	if use qorph; then
+		dobin scripts/qorph
 	fi
 }

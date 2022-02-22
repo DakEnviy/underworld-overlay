@@ -12,6 +12,7 @@
 		<flag name="eupd">Enable eupd command</flag>
 		<flag name="rcms">Enable rcms command</flag>
 		<flag name="enewyear">Enable enewyear command</flag>
+		<flag name="qorph">Enable qorph command</flag>
 		<flag name="auto-sudo">Run all commands with sudo automatically</flag>
 	</use>
 	<upstream>
