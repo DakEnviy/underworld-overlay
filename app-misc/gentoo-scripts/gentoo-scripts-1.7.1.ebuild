@@ -3,6 +3,10 @@
 
 EAPI=8
 
+PYTHON_COMPAT=( python3_9 )
+
+inherit python-single-r1
+
 DESCRIPTION="Some useful scripts for gentoo"
 HOMEPAGE="https://github.com/DakEnviy/gentoo-scripts"
 SRC_URI="https://github.com/DakEnviy/gentoo-scripts/archive/refs/tags/v${PV}.tar.gz"
@@ -11,6 +15,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+qtop +esync +eclt +eupd +rcms +enewyear +qorph auto-sudo"
+REQUIRED_USE="qorph? ( ${PYTHON_REQUIRED_USE} )"
 
 DEPEND="
 	qtop? (
@@ -33,6 +38,7 @@ DEPEND="
 		sys-apps/portage
 	)
 	qorph? (
+		${PYTHON_DEPS}
 		app-portage/gentoolkit
 	)
 	auto-sudo? (

@@ -36,3 +36,7 @@ sync-uri = https://github.com/DakEnviy/underworld-overlay.git
 
 Then run `emerge --sync`
 
+## Details
+
+- sys-auth/libfprint - has drivers for new goodix devices (more: https://github.com/Infinytum/libfprint/tree/unstable)
+
