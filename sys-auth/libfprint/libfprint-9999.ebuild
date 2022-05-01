@@ -10,7 +10,6 @@ DESCRIPTION="Library to add support for consumer fingerprint readers"
 HOMEPAGE="https://github.com/Infinytum/libfprint/tree/unstable"
 SRC_URI="https://github.com/Infinytum/libfprint/archive/refs/heads/${BRANCH}.tar.gz -> ${P}.tar.gz"
 
-
 LICENSE="LGPL-2.1+"
 SLOT="2"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
