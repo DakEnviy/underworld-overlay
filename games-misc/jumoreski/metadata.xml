@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<name>Eridan Domoratskiy</name>
+		<email>eridan200@mail.ru</email>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://github.com/BobIsOnFire/jumoreski/issues</bugs-to>
+		<remote-id type="github">https://github.com/BobIsOnFire/jumoreski</remote-id>
+	</upstream>
+</pkgmetadata>
