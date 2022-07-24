@@ -1,5 +1,42 @@
+diff --git a/cowsay/install.sh b/cowsay/install.sh
+index 814331b..98eecac 100755
+--- a/cowsay/install.sh
++++ b/cowsay/install.sh
+@@ -71,21 +71,21 @@ echo Okay, time to install this puppy.
+ echo s,%BANGPERL%,!$usethisperl,\; > $cwd/install.pl
+ echo s,%PREFIX%,$PREFIX,\; >> $cwd/install.pl
+ set -x
+-mkdir -p $PREFIX/bin || (mkdir $PREFIX; mkdir $PREFIX/bin)
+-$usethisperl -p $cwd/install.pl $cwd/cowsay > $PREFIX/bin/cowsay
+-chmod a+x $PREFIX/bin/cowsay
+-ln -s cowsay $PREFIX/bin/cowthink
+-mkdir -p $PREFIX/man/man1 || ($mkdir $PREFIX; mkdir $PREFIX/man; mkdir $PREFIX/man/man1)
+-$usethisperl -p $cwd/install.pl $cwd/cowsay.1 > $PREFIX/man/man1/cowsay.1
+-chmod a+r $PREFIX/man/man1/cowsay.1
+-ln -s cowsay.1 $PREFIX/man/man1/cowthink.1
+-mkdir -p $PREFIX/share/cows || (mkdir $PREFIX; mkdir $PREFIX/share; mkdir $PREFIX/share/cows)
+-tar -C $cwd -cf - $filelist | (cd $PREFIX/share && tar -xvf -)
++mkdir -p $D$PREFIX/bin
++$usethisperl -p $cwd/install.pl $cwd/cowsay > $D$PREFIX/bin/cowsay
++chmod a+x $D$PREFIX/bin/cowsay
++ln -s cowsay $D$PREFIX/bin/cowthink
++mkdir -p $D$PREFIX/man/man1
++$usethisperl -p $cwd/install.pl $cwd/cowsay.1 > $D$PREFIX/man/man1/cowsay.1
++chmod a+r $D$PREFIX/man/man1/cowsay.1
++ln -s cowsay.1 $D$PREFIX/man/man1/cowthink.1
++mkdir -p $D$PREFIX/share/cows
++tar -C $cwd -cf - $filelist | (cd $D$PREFIX/share && tar -xvf -)
+ set +x
+ 
+ echo Okay, let us see if the install actually worked.
+ 
+-if [ ! -f $PREFIX/share/cows/default.cow ]; then
++if [ ! -f $D$PREFIX/share/cows/default.cow ]; then
+     echo The default cow file did not make it across!
+     echo Ooops, it failed...sorry!
+     exit 1
 diff --git a/jumoreski.sh b/jumoreski.sh
-index a9d1e40..ac8f9f0 100644
+index a9d1e40..f5b9379 100644
 --- a/jumoreski.sh
 +++ b/jumoreski.sh
 @@ -3,13 +3,13 @@ function print_motd() {
@@ -7,10 +44,10 @@ index a9d1e40..ac8f9f0 100644
      if [ ! -z "$PS1" ]; then
          fortune $datafile | if [ "`date +"%A"`" = "Wednesday" ]; then
 -            cowsay -f small-frogs-wednesday -W 80
-+            /usr/share/jumoreski/cowsay -f small-frogs-wednesday -W 80
++            /usr/share/jumoreski/cowsay/bin/cowsay -f small-frogs-wednesday -W 80
          else
 -            cowsay -W 80
-+            /usr/share/jumoreski/cowsay -W 80
++            /usr/share/jumoreski/cowsay/bin/cowsay -W 80
          fi | lolcat
      fi
  }

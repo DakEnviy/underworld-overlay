@@ -19,9 +19,12 @@ DEPEND="
 	>=dev-lang/perl-5
 	games-misc/fortune-mod
 	games-misc/lolcat
+	sys-apps/coreutils
 "
 RDEPEND="${DEPEND}"
 BDEPEND="${DEPEND} app-arch/unzip"
+
+S="${WORKDIR}/${PN}-${COMMIT}"
 
 PATCHES=(
 	"${FILESDIR}/destdir.patch"
@@ -31,7 +34,7 @@ src_install() {
 	insinto "/usr/share"
 	doins -r jumoreski
 
-	./cowsay/install.sh "${D}/usr/share/jumoreski" || die "Cowsay installer failed"
+	./cowsay/install.sh "/usr/share/jumoreski/cowsay" || die "Cowsay installer failed"
 
 	insinto "/etc/profile.d"
 	doins jumoreski.sh
