@@ -39,3 +39,11 @@ src_install() {
 	insinto "/etc/profile.d"
 	doins jumoreski.sh
 }
+
+pkg_postinst() {
+	einfo "File jumoreski.sh installed into /etc/profile.d contains functions print_motd and"
+	einfo "print_jumoreski. If your shell don't source /etc/profile.d (e.g. zsh), source this"
+	einfo "file manually in your rc file (e.g. .zshrc)."
+
+	einfo "It is recommend to add print_jumoreski function call into your rc file :)"
+}
