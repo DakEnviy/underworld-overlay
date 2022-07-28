@@ -3,18 +3,17 @@
 
 EAPI=8
 
-BRANCH="main"
+COMMIT="a93e34815d9ee1f04485e0a7de6f270e0be8099d"
 
 DESCRIPTION="Bring colorful and funny Jumoreski into your workspace!"
 HOMEPAGE="https://github.com/BobIsOnFire/jumoreski"
-SRC_URI="https://github.com/BobIsOnFire/jumoreski/archive/refs/heads/${BRANCH}.zip -> ${PF}.zip"
+SRC_URI="https://github.com/BobIsOnFire/jumoreski/archive/${COMMIT}.zip -> ${PF}.zip"
 
 LICENSE="|| ( Artistic GPL-1+ )"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 REQUIRED_USE=""
-RESTRICT="mirror"
 
 DEPEND="
 	>=dev-lang/perl-5
@@ -30,7 +29,7 @@ BDEPEND="
 "
 IDEPEND="games-misc/fortune-mod"
 
-S="${WORKDIR}/${PN}-${BRANCH}"
+S="${WORKDIR}/${PN}-${COMMIT}"
 
 PATCHES=(
 	"${FILESDIR}/destdir.patch"
