@@ -3,7 +3,7 @@
 
 EAPI=8
 
-COMMIT="a93e34815d9ee1f04485e0a7de6f270e0be8099d"
+COMMIT="4ddd89109784e324dfec96e3f28dabc5078eedc2"
 
 DESCRIPTION="Bring colorful and funny Jumoreski into your workspace!"
 HOMEPAGE="https://github.com/BobIsOnFire/jumoreski"
