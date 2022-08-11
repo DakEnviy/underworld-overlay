@@ -53,13 +53,13 @@ index 814331b..e784fa6 100755
      echo Ooops, it failed...sorry!
      exit 1
 diff --git a/jumoreski.sh b/jumoreski.sh
-index 66766ee..1803627 100644
+index 7eda414..aa18b8d 100644
 --- a/jumoreski.sh
 +++ b/jumoreski.sh
 @@ -3,13 +3,13 @@ function print_motd() {
      # Run only in an interactive shell
      if [ ! -z "$PS1" ]; then
-         fortune $datafile | if [ "`date +"%A"`" = "Wednesday" ]; then
+         fortune $datafile | if [ "`date +"%w"`" = "3" ]; then
 -            cowsay -f small-frogs-wednesday -W 80
 +            /usr/share/jumoreski/cowsay/cowsay -f small-frogs-wednesday -W 80
          else
