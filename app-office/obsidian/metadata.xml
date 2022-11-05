@@ -6,11 +6,11 @@
 		<name>Mikahil Golbakh</name>
 	</maintainer>
 	<longdescription lang="en">
-		Obsidian is a powerful knowledge base on top of a local folder of plain text Markdown files.
+		Obsidian is a powerful and extensible knowledge base that works on top of your local folder of plain text files.
 	</longdescription>
 	<upstream>
 		<changelog>https://forum.obsidian.md/c/announcements</changelog>
 		<bugs-to>https://forum.obsidian.md/c/bug-reports</bugs-to>
-		<remote-id type="github">https://github.com/obsidianmd/obsidian-releases</remote-id>
+		<remote-id type="github">obsidianmd/obsidian-releases</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -11,6 +11,6 @@
 	<upstream>
 		<changelog>https://github.com/pulseaudio-equalizer-ladspa/equalizer/releases</changelog>
 		<bugs-to>https://github.com/pulseaudio-equalizer-ladspa/equalizer/issues</bugs-to>
-		<remote-id type="github">https://github.com/pulseaudio-equalizer-ladspa/equalizer</remote-id>
+		<remote-id type="github">pulseaudio-equalizer-ladspa/equalizer</remote-id>
 	</upstream>
 </pkgmetadata>

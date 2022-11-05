@@ -18,6 +18,6 @@
 	<upstream>
 		<changelog>https://github.com/DakEnviy/gentoo-scripts/releases</changelog>
 		<bugs-to>https://github.com/DakEnviy/gentoo-scripts/issues</bugs-to>
-		<remote-id type="github">https://github.com/DakEnviy/gentoo-scripts</remote-id>
+		<remote-id type="github">DakEnviy/gentoo-scripts</remote-id>
 	</upstream>
 </pkgmetadata>

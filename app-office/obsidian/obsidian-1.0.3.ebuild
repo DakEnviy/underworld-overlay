@@ -22,6 +22,7 @@ DESCRIPTION="Obsidian is a powerful knowledge base that uses Markdown files"
 HOMEPAGE="https://obsidian.md"
 SRC_URI="https://github.com/obsidianmd/obsidian-releases/releases/download/v${PV}/Obsidian-${PV}.AppImage -> ${_APPIMAGE}"
 LICENSE="Obsidian-EULA"
+RESTRICT="bindist mirror"
 
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
@@ -57,7 +58,7 @@ src_install() {
 	# AppImage
 	insinto "${_APPHOME}"
 	doins "${_APPIMAGE}"
-	chmod 755 "${D%/}/${_APPHOME}/${_APPIMAGE}"
+	chmod 755 "${D}/${_APPHOME}/${_APPIMAGE}"
 
 	# Symlink executable
 	dosym "${_APPHOME}/${_APPIMAGE}" "${_EXEC}"

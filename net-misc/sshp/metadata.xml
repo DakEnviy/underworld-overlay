@@ -8,6 +8,6 @@
 	<upstream>
 		<changelog>https://github.com/DakEnviy/sshp/releases</changelog>
 		<bugs-to>https://github.com/DakEnviy/sshp/issues</bugs-to>
-		<remote-id type="github">https://github.com/DakEnviy/sshp</remote-id>
+		<remote-id type="github">DakEnviy/sshp</remote-id>
 	</upstream>
 </pkgmetadata>
