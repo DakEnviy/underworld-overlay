@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DESCRIPTION=Static Code Analyzer for C, C++
+EAPI=7
+HOMEPAGE=https://pvs-studio.com/en/pvs-studio/
+INHERIT=bash-completion-r1 eutils
+IUSE=bash-completion
+KEYWORDS=~amd64
+LICENSE=free-noncomm
+SLOT=0
+SRC_URI=https://cdn.pvs-studio.com/pvs-studio-7.18.59866.202-x86_64.tgz
+_eclasses_=toolchain-funcs	441f754fd75cd4fd1fa06fbc17da6144	multilib	5ca4e49abed8e3a2f7b56920eadee157	bash-completion-r1	f5e7a020fd9c741740756aac61bf75ff	edos2unix	33e347e171066657f91f8b0c72ec8773	strip-linguas	ac3ee41ee2d31d8c41a77c0838320cc7	wrapper	4a1902f969e5718126434fc35f3a0d9c	eutils	8f942ebdcf04334697649d4a0bf65a32
+_md5_=417378d0949ba8595670c8a22bd3c66b
