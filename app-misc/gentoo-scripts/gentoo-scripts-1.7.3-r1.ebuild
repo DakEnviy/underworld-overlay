@@ -3,13 +3,13 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_9 )
+PYTHON_COMPAT=( python3_{9,10,11} )
 
 inherit python-single-r1
 
 DESCRIPTION="Some useful scripts for gentoo"
 HOMEPAGE="https://github.com/DakEnviy/gentoo-scripts"
-SRC_URI="https://github.com/DakEnviy/gentoo-scripts/archive/refs/tags/v${PV}.tar.gz"
+SRC_URI="https://github.com/DakEnviy/gentoo-scripts/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
