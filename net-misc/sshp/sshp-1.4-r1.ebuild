@@ -5,7 +5,7 @@ EAPI=8
 
 DESCRIPTION="A wrapper for ssh for simple access via password"
 HOMEPAGE="https://github.com/DakEnviy/sshp"
-SRC_URI="https://github.com/DakEnviy/sshp/archive/refs/tags/v${PV}.tar.gz"
+SRC_URI="https://github.com/DakEnviy/sshp/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

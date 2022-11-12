@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DEPEND=sys-apps/coreutils sys-apps/util-linux net-misc/openssh net-misc/sshpass dev-libs/openssl x11-misc/xclip
+DESCRIPTION=A wrapper for ssh for simple access via password
+EAPI=8
+HOMEPAGE=https://github.com/DakEnviy/sshp
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=sys-apps/coreutils sys-apps/util-linux net-misc/openssh net-misc/sshpass dev-libs/openssl x11-misc/xclip
+SLOT=0
+SRC_URI=https://github.com/DakEnviy/sshp/archive/refs/tags/v1.4.tar.gz -> sshp-1.4.tar.gz
+_md5_=f6854708d438ce1626f3e79bd8099e3c
