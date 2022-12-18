@@ -1,5 +1,5 @@
 DEFINED_PHASES=install prepare setup
-DEPEND=qtop? ( app-portage/portage-utils ) esync? ( sys-apps/portage ) eclt? ( sys-apps/portage app-portage/portage-utils ) eupd? ( sys-apps/portage ) rcms? ( sys-apps/openrc ) enewyear? ( sys-apps/portage ) qorph? ( python_single_target_python3_9? ( >=dev-lang/python-3.9.12:3.9 ) python_single_target_python3_10? ( >=dev-lang/python-3.10.4:3.10 ) python_single_target_python3_11? ( >=dev-lang/python-3.11.0_beta4:3.11 ) app-portage/gentoolkit ) auto-sudo? ( app-admin/sudo )
+DEPEND=qtop? ( app-portage/portage-utils ) esync? ( sys-apps/portage ) eclt? ( sys-apps/portage app-portage/portage-utils ) eupd? ( sys-apps/portage ) rcms? ( sys-apps/openrc ) enewyear? ( sys-apps/portage ) qorph? ( python_single_target_python3_9? ( >=dev-lang/python-3.9.16:3.9 ) python_single_target_python3_10? ( >=dev-lang/python-3.10.9:3.10 ) python_single_target_python3_11? ( >=dev-lang/python-3.11.1:3.11 ) app-portage/gentoolkit ) auto-sudo? ( app-admin/sudo )
 DESCRIPTION=Some useful scripts for gentoo
 EAPI=8
 HOMEPAGE=https://github.com/DakEnviy/gentoo-scripts
@@ -7,9 +7,9 @@ INHERIT=python-single-r1
 IUSE=+qtop +esync +eclt +eupd +rcms +enewyear +qorph auto-sudo python_single_target_python3_9 python_single_target_python3_10 python_single_target_python3_11
 KEYWORDS=~amd64 ~x86
 LICENSE=MIT
-RDEPEND=qtop? ( app-portage/portage-utils ) esync? ( sys-apps/portage ) eclt? ( sys-apps/portage app-portage/portage-utils ) eupd? ( sys-apps/portage ) rcms? ( sys-apps/openrc ) enewyear? ( sys-apps/portage ) qorph? ( python_single_target_python3_9? ( >=dev-lang/python-3.9.12:3.9 ) python_single_target_python3_10? ( >=dev-lang/python-3.10.4:3.10 ) python_single_target_python3_11? ( >=dev-lang/python-3.11.0_beta4:3.11 ) app-portage/gentoolkit ) auto-sudo? ( app-admin/sudo )
+RDEPEND=qtop? ( app-portage/portage-utils ) esync? ( sys-apps/portage ) eclt? ( sys-apps/portage app-portage/portage-utils ) eupd? ( sys-apps/portage ) rcms? ( sys-apps/openrc ) enewyear? ( sys-apps/portage ) qorph? ( python_single_target_python3_9? ( >=dev-lang/python-3.9.16:3.9 ) python_single_target_python3_10? ( >=dev-lang/python-3.10.9:3.10 ) python_single_target_python3_11? ( >=dev-lang/python-3.11.1:3.11 ) app-portage/gentoolkit ) auto-sudo? ( app-admin/sudo )
 REQUIRED_USE=qorph? ( ^^ ( python_single_target_python3_9 python_single_target_python3_10 python_single_target_python3_11 ) )
 SLOT=0
 SRC_URI=https://github.com/DakEnviy/gentoo-scripts/archive/refs/tags/v1.7.3.tar.gz -> gentoo-scripts-1.7.3.tar.gz
-_eclasses_=multiprocessing	b4e253ab22cef7b1085e9b67c7a3b730	toolchain-funcs	441f754fd75cd4fd1fa06fbc17da6144	multilib	5ca4e49abed8e3a2f7b56920eadee157	python-utils-r1	b9fc5e97e886514e5132f50465185401	python-single-r1	a5747fe6dc0651d95cb78eddd5e160a8
+_eclasses_=multiprocessing	b4e253ab22cef7b1085e9b67c7a3b730	toolchain-funcs	37a4612ce5522df5a100359a8dbc8491	multilib	5ca4e49abed8e3a2f7b56920eadee157	python-utils-r1	6a75203e8a499f0fb42971452ce15388	python-single-r1	a5747fe6dc0651d95cb78eddd5e160a8
 _md5_=0ec32c8f4720700d79683f6b384a8dea
