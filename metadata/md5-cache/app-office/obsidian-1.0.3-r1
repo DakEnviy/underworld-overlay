@@ -11,5 +11,5 @@ RDEPEND=x11-themes/hicolor-icon-theme
 RESTRICT=strip bindist mirror
 SLOT=0
 SRC_URI=https://github.com/obsidianmd/obsidian-releases/releases/download/v1.0.3/Obsidian-1.0.3.AppImage -> obsidian-1.0.3.AppImage
-_eclasses_=desktop	7eb20ad915a0a318176d51bc2508ff5c	xdg-utils	ac0e315a3688929e34ac75b139e7349a
+_eclasses_=desktop	021728fdc1b03b36357dbc89489e0f0d	xdg-utils	ac0e315a3688929e34ac75b139e7349a
 _md5_=318d4759942ebe165d786c027d63c301

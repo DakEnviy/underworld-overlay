@@ -1,6 +1,6 @@
 BDEPEND=dev-util/ninja >=dev-util/meson-0.46 >=dev-util/meson-0.62.2 >=dev-util/ninja-1.8.2 dev-util/meson-format-array
 DEFINED_PHASES=compile configure install setup test
-DEPEND=python_single_target_python3_9? ( >=dev-lang/python-3.9.16:3.9 ) python_single_target_python3_10? ( >=dev-lang/python-3.10.9:3.10 ) python_single_target_python3_11? ( >=dev-lang/python-3.11.1:3.11 ) dev-python/pygobject:3 x11-libs/gtk+:3 media-sound/pulseaudio media-plugins/swh-plugins sys-devel/bc
+DEPEND=python_single_target_python3_9? ( >=dev-lang/python-3.9.16-r1:3.9 ) python_single_target_python3_10? ( >=dev-lang/python-3.10.9-r1:3.10 ) python_single_target_python3_11? ( >=dev-lang/python-3.11.1-r1:3.11 ) dev-python/pygobject:3 x11-libs/gtk+:3 media-sound/pulseaudio media-plugins/swh-plugins sys-devel/bc
 DESCRIPTION=A 15-band equalizer for PulseAudio
 EAPI=7
 HOMEPAGE=https://github.com/pulseaudio-equalizer-ladspa/equalizer
@@ -8,9 +8,9 @@ INHERIT=meson python-single-r1
 IUSE=python_single_target_python3_9 python_single_target_python3_10 python_single_target_python3_11
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-3
-RDEPEND=python_single_target_python3_9? ( >=dev-lang/python-3.9.16:3.9 ) python_single_target_python3_10? ( >=dev-lang/python-3.10.9:3.10 ) python_single_target_python3_11? ( >=dev-lang/python-3.11.1:3.11 ) dev-python/pygobject:3 x11-libs/gtk+:3 media-sound/pulseaudio media-plugins/swh-plugins sys-devel/bc
+RDEPEND=python_single_target_python3_9? ( >=dev-lang/python-3.9.16-r1:3.9 ) python_single_target_python3_10? ( >=dev-lang/python-3.10.9-r1:3.10 ) python_single_target_python3_11? ( >=dev-lang/python-3.11.1-r1:3.11 ) dev-python/pygobject:3 x11-libs/gtk+:3 media-sound/pulseaudio media-plugins/swh-plugins sys-devel/bc
 REQUIRED_USE=^^ ( python_single_target_python3_9 python_single_target_python3_10 python_single_target_python3_11 )
 SLOT=0
 SRC_URI=https://github.com/pulseaudio-equalizer-ladspa/equalizer/archive/v3.0.2.tar.gz -> pulseaudio-equalizer-ladspa-3.0.2.tar.gz
-_eclasses_=multiprocessing	b4e253ab22cef7b1085e9b67c7a3b730	ninja-utils	38c85b725d0467e51954ea921b6c104b	eapi8-dosym	cd7d420bb5be5ee079f27239ce76b8f5	toolchain-funcs	37a4612ce5522df5a100359a8dbc8491	multilib	5ca4e49abed8e3a2f7b56920eadee157	python-utils-r1	1d1b325c00c1d24c564a1b49327ec3c5	meson	1994a5aef5d4f5798b92f64d6f9a6003	python-single-r1	75118e916668a74c660a13b0ecb22562
+_eclasses_=multiprocessing	b4e253ab22cef7b1085e9b67c7a3b730	ninja-utils	38c85b725d0467e51954ea921b6c104b	eapi8-dosym	cd7d420bb5be5ee079f27239ce76b8f5	toolchain-funcs	6001248ef162a5fa2a21ce132a212f6b	multilib	5ca4e49abed8e3a2f7b56920eadee157	python-utils-r1	429bfd4e8d8e39db5385ba5744f30788	meson	1994a5aef5d4f5798b92f64d6f9a6003	python-single-r1	75118e916668a74c660a13b0ecb22562
 _md5_=3ba0f72822dd31b169be9832186012cd
