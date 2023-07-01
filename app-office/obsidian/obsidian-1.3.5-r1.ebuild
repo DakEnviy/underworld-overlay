@@ -29,11 +29,12 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="
+	sys-fs/fuse:0
 	x11-themes/hicolor-icon-theme
 "
 RDEPEND="${DEPEND}"
 BDEPEND="
-	sys-fs/fuse
+	sys-fs/fuse:0
 	x11-themes/hicolor-icon-theme
 "
 
