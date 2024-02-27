@@ -23,7 +23,7 @@ RDEPEND="
 	x11-libs/gtk+:3
 	media-sound/pulseaudio
 	media-plugins/swh-plugins
-	sys-devel/bc
+	app-alternatives/bc
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
