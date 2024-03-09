@@ -14,6 +14,7 @@
 		<flag name="enewyear">Enable enewyear command</flag>
 		<flag name="qorph">Enable qorph command</flag>
 		<flag name="auto-sudo">Run all commands with sudo automatically</flag>
+		<flag name="getbinpkg">Adds --getbinpkg flag to emerge command</flag>
 	</use>
 	<upstream>
 		<changelog>https://github.com/DakEnviy/gentoo-scripts/releases</changelog>

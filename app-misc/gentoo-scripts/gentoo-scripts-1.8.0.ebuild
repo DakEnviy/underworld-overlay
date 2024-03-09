@@ -14,7 +14,7 @@ SRC_URI="https://github.com/DakEnviy/gentoo-scripts/archive/refs/tags/v${PV}.tar
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+qtop +esync +eclt +eupd +rcms +enewyear +qorph auto-sudo"
+IUSE="+qtop +esync +eclt +eupd +rcms +enewyear +qorph auto-sudo getbinpkg"
 REQUIRED_USE="qorph? ( ${PYTHON_REQUIRED_USE} )"
 
 DEPEND="
@@ -51,6 +51,10 @@ BDEPEND=""
 src_prepare() {
 	if use auto-sudo; then
 		sed -i "s/AUTO_SUDO=0/AUTO_SUDO=1/g" scripts/*
+	fi
+
+	if use getbinpkg; then
+		sed -i "s/DEFAULT_GETBINPKG=0/DEFAULT_GETBINPKG=1/g" scripts/*
 	fi
 
 	eapply_user
