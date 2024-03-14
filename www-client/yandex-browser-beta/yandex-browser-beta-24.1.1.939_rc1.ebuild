@@ -199,7 +199,7 @@ pkg_postinst() {
 		# Not working now
 		# bash "/${YANDEX_HOME}/update-ffmpeg"
 
-		"/${YANDEX_HOME}/update_codecs" 116 "/${YANDEX_HOME}" || true
+		"/${YANDEX_HOME}/update_codecs" "/${YANDEX_HOME}"
 	else
 		ewarn "For a complete support for video and audio in the HTML5 format"
 		ewarn "see: https://yandex.ru/support/browser-beta/working-with-files/video.html#problems__video-linux"
