@@ -116,7 +116,7 @@ RDEPEND="
 	ffmpeg-codecs? (
 		app-misc/jq
 		net-misc/wget
-		sys-fs/squashfs-tools[lzo]
+		sys-fs/squashfs-tools[lz4,lzma,lzo]
 	)
 "
 
