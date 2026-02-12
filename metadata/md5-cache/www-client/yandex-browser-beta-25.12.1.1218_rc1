@@ -1,0 +1,15 @@
+DEFINED_PHASES=install postinst postrm prepare setup unpack
+DEPEND=>=dev-util/patchelf-0.9
+DESCRIPTION=The web browser from Yandex
+EAPI=7
+HOMEPAGE=https://browser.yandex.ru/beta/
+INHERIT=chromium-2 unpacker pax-utils xdg-utils
+IUSE=+ffmpeg-codecs +l10n_cs +l10n_de +l10n_en-US +l10n_es +l10n_fr +l10n_it +l10n_ja +l10n_pt-BR +l10n_pt-PT +l10n_ru +l10n_tr +l10n_uk +l10n_zh-CN +l10n_zh-TW
+KEYWORDS=~amd64 ~x86
+LICENSE=Yandex-EULA
+RDEPEND=sys-devel/binutils media-fonts/liberation-fonts >=media-libs/alsa-lib-1.0.17 >=app-accessibility/at-spi2-core-2.9.90 virtual/libc >=x11-libs/cairo-1.6.0 >=net-print/cups-1.6.0 net-misc/curl >=sys-apps/dbus-1.9.14 >=x11-libs/libdrm-2.4.75 >=dev-libs/expat-2.0.1 >=media-libs/mesa-17.1.0 >=dev-libs/glib-2.39.4:2 x11-libs/gtk+:2 >=dev-libs/nspr-4.9 >=dev-libs/nss-3.35 >=x11-libs/pango-1.14.0[X] media-libs/vulkan-loader >=x11-libs/libX11-1.4.99.1 >=x11-libs/libxcb-1.9.2 >=x11-libs/libXcomposite-0.4.4 >=x11-libs/libXdamage-1.1 x11-libs/libXext x11-libs/libXfixes >=x11-libs/libxkbcommon-0.5.0 x11-libs/libxkbfile x11-libs/libXrandr >=x11-misc/xdg-utils-1.0.2 >=dev-libs/openssl-1.0.1:0 media-libs/fontconfig media-libs/freetype sys-libs/libcap virtual/libudev x11-libs/gdk-pixbuf x11-libs/libXScrnSaver x11-libs/libXcursor x11-libs/libXi x11-libs/libXrender x11-libs/libXtst sys-libs/libudev-compat ffmpeg-codecs? ( app-misc/jq net-misc/wget sys-fs/squashfs-tools[lz4,lzma,lzo] )
+RESTRICT=bindist mirror strip
+SLOT=0
+SRC_URI=amd64? ( https://repo.yandex.ru/yandex-browser/deb/pool/main/y/yandex-browser-beta/yandex-browser-beta_25.12.1.1218-1_amd64.deb -> yandex-browser-beta-25.12.1.1218_rc1.deb )
+_eclasses_=toolchain-funcs	7e440a20ac11dece04e3334622e6e5da	linux-info	efd923656513c879204fec6638eadee5	chromium-2	6be3cf193def84c82ddae5c1f21ddbe5	multiprocessing	1e32df7deee68372153dca65f4a7c21f	unpacker	3b4ee72d1e2e0374fd8cd3eddfa00627	pax-utils	5555f2e75744739fe100ee62c22d28fe	xdg-utils	42869b3c8d86a70ef3cf75165a395e09
+_md5_=33c926c0adb09c7ccc74d5aaa2e5775d
