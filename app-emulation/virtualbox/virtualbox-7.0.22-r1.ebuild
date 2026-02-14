@@ -199,6 +199,8 @@ REQUIRED_USE="
 PATCHES=(
 	# Downloaded patchset
 	"${WORKDIR}"/virtualbox-patches-7.0.22-r1/patches
+	# 14.02.2026 ProgMiner: patch for curl_proxytype enum value type casting
+	"${FILESDIR}"/curl-proxytype.patch
 )
 
 pkg_pretend() {

@@ -1,5 +1,5 @@
---- src/VBox/Runtime/generic/http-curl.cpp	2026-02-13 19:26:39.506334407 +0300
-+++ src/VBox/Runtime/generic/http-curl.cpp	2026-02-13 19:27:52.350142975 +0300
+--- a/src/VBox/Runtime/generic/http-curl.cpp	2026-02-13 19:26:39.506334407 +0300
++++ b/src/VBox/Runtime/generic/http-curl.cpp	2026-02-13 19:27:52.350142975 +0300
 @@ -696,7 +696,7 @@
      Log(("rtHttpUpdateAutomaticProxyDisable: pThis=%p\n", pThis));
  
