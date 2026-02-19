@@ -1,132 +1,81 @@
-# Copyright 2021-2022 Gentoo Authors
+# Copyright 2021-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+# Derived from github.com/yandex-gentoo/overlay
 
-# This must be placed before 'inherit chromium-2'
-CHROMIUM_LANGS="cs de en-US es fr it ja pt-BR pt-PT ru tr uk zh-CN zh-TW"
-
-inherit chromium-2 unpacker pax-utils xdg-utils
-
-RESTRICT="bindist mirror strip"
+EAPI=8
+CHROMIUM_LANGS="cs de en-US es fr it ja kk pt-BR pt-PT ru tr uk uz zh-CN zh-TW"
+inherit chromium-2 unpacker desktop wrapper pax-utils xdg
 
 MY_PV="${PV/_rc/-}"
+FFMPEG_PV="142"
 
 DESCRIPTION="The web browser from Yandex"
 HOMEPAGE="https://browser.yandex.ru/beta/"
 LICENSE="Yandex-EULA"
-SLOT="0"
+
 SRC_URI="
-	amd64? ( https://repo.yandex.ru/yandex-browser/deb/pool/main/y/yandex-browser-beta/yandex-browser-beta_${MY_PV}_amd64.deb -> ${P}.deb )
-"
-KEYWORDS="~amd64 ~x86"
-IUSE="+ffmpeg-codecs"
-
-# RDEPEND="
-# 	sys-devel/binutils				# binutils
-# 	media-fonts/liberation-fonts	# fonts-liberation
-# 	>=media-libs/alsa-lib-1.0.17	# libasound2
-# 	>=app-accessibility/at-spi2-core-2.9.90 # libatk-bridge2.0-0
-# 									# libatk1.0-0
-# 									# libatspi2.0-0
-# 	virtual/libc					# libc6
-# 	>=x11-libs/cairo-1.6.0			# libcairo2
-# 	>=net-print/cups-1.6.0			# libcups2
-# 	net-misc/curl					# libcurl3-gnutls | libcurl3-nss | libcurl4 | libcurl3
-# 	>=sys-apps/dbus-1.9.14			# libdbus-1-3
-# 	>=x11-libs/libdrm-2.4.75		# libdrm2
-# 	>=dev-libs/expat-2.0.1			# libexpat1
-# 	>=media-libs/mesa-17.1.0		# libgbm1
-# 	>=dev-libs/glib-2.39.4:2		# libglib2.0-0
-# 	x11-libs/gtk+:2					# libgtk-3-0 (>= 3.9.10) | libgtk-4-1
-# 	>=dev-libs/nspr-4.9				# libnspr4
-# 	>=dev-libs/nss-3.35				# libnss3
-# 	>=x11-libs/pango-1.14.0 [X]		# libpango-1.0-0
-# 	media-libs/vulkan-loader		# libvulkan1
-# 	>=x11-libs/libX11-1.4.99.1		# libx11-6
-# 	>=x11-libs/libxcb-1.9.2			# libxcb1
-# 	>=x11-libs/libXcomposite-0.4.4	# libxcomposite1
-# 	>=x11-libs/libXdamage-1.1		# libxdamage1
-# 	x11-libs/libXext				# libxext6
-# 	x11-libs/libXfixes				# libxfixes3
-# 	>=x11-libs/libxkbcommon-0.5.0	# libxkbcommon0
-# 	x11-libs/libxkbfile				# libxkbfile1
-# 	x11-libs/libXrandr				# libxrandr2
-# 	>=x11-misc/xdg-utils-1.0.2		# xdg-utils
-# 	>=dev-libs/openssl-1.0.1:0
-# 	media-libs/fontconfig
-# 	media-libs/freetype
-# 	sys-libs/libcap
-# 	virtual/libudev
-# 	x11-libs/gdk-pixbuf
-# 	x11-libs/libXScrnSaver
-# 	x11-libs/libXcursor
-# 	x11-libs/libXi
-# 	x11-libs/libXrender
-# 	x11-libs/libXtst
-# 	sys-libs/libudev-compat
-# 	ffmpeg-codecs? (
-# 		app-misc/jq					# jq
-# 		net-misc/wget				# wget
-# 		sys-fs/squashfs-tools		# squashfs-tools
-# 	)
-# "
-
-RDEPEND="
-	sys-devel/binutils
-	media-fonts/liberation-fonts
-	>=media-libs/alsa-lib-1.0.17
-	>=app-accessibility/at-spi2-core-2.9.90
-	virtual/libc
-	>=x11-libs/cairo-1.6.0
-	>=net-print/cups-1.6.0
-	net-misc/curl
-	>=sys-apps/dbus-1.9.14
-	>=x11-libs/libdrm-2.4.75
-	>=dev-libs/expat-2.0.1
-	>=media-libs/mesa-17.1.0
-	>=dev-libs/glib-2.39.4:2
-	x11-libs/gtk+:2
-	>=dev-libs/nspr-4.9
-	>=dev-libs/nss-3.35
-	>=x11-libs/pango-1.14.0[X]
-	media-libs/vulkan-loader
-	>=x11-libs/libX11-1.4.99.1
-	>=x11-libs/libxcb-1.9.2
-	>=x11-libs/libXcomposite-0.4.4
-	>=x11-libs/libXdamage-1.1
-	x11-libs/libXext
-	x11-libs/libXfixes
-	>=x11-libs/libxkbcommon-0.5.0
-	x11-libs/libxkbfile
-	x11-libs/libXrandr
-	>=x11-misc/xdg-utils-1.0.2
-	>=dev-libs/openssl-1.0.1:0
-	media-libs/fontconfig
-	media-libs/freetype
-	sys-libs/libcap
-	virtual/libudev
-	x11-libs/gdk-pixbuf
-	x11-libs/libXScrnSaver
-	x11-libs/libXcursor
-	x11-libs/libXi
-	x11-libs/libXrender
-	x11-libs/libXtst
-	sys-libs/libudev-compat
-	ffmpeg-codecs? (
-		app-misc/jq
-		net-misc/wget
-		sys-fs/squashfs-tools[lz4,lzma,lzo]
-	)
+	amd64? ( https://repo.yandex.ru/yandex-browser/deb/pool/main/y/${PN}/${PN}_${MY_PV}_amd64.deb -> ${P}.deb )
 "
 
-DEPEND="
+SLOT="0"
+KEYWORDS="~amd64"
+IUSE="+ffmpeg-codecs qt5 qt6"
+RESTRICT="bindist mirror strip"
+
+BDEPEND="
 	>=dev-util/patchelf-0.9
 "
 
-QA_PREBUILT="*"
+RDEPEND="
+	dev-libs/expat
+	dev-libs/glib:2
+	dev-libs/nspr
+	dev-libs/nss
+	>=dev-libs/openssl-1.0.1:0
+	media-libs/alsa-lib
+	media-libs/fontconfig
+	media-libs/freetype
+	net-misc/curl
+	net-print/cups
+	sys-apps/dbus
+	sys-libs/libcap
+	virtual/libudev
+	x11-libs/cairo
+	x11-libs/libdrm
+	x11-libs/libX11
+	x11-libs/libxcb
+	x11-libs/libXcomposite
+	x11-libs/libXdamage
+	x11-libs/libXext
+	x11-libs/libXfixes
+	x11-libs/libxkbcommon
+	x11-libs/libXrandr
+	x11-libs/pango[X]
+	x11-misc/xdg-utils
+	ffmpeg-codecs? ( media-video/ffmpeg-chromium:${FFMPEG_PV} )
+	sys-libs/libudev-compat
+	qt5? (
+		dev-qt/qtcore:5
+		dev-qt/qtgui:5[X]
+		dev-qt/qtwidgets:5
+	)
+	qt6? (
+		dev-qt/qtbase:6[gui,widgets]
+	)
+	app-accessibility/at-spi2-core
+"
+
 S=${WORKDIR}
 YANDEX_HOME="opt/${PN/-//}"
+
+QA_PREBUILT="*"
+QA_DESKTOP_FILE="usr/share/applications/yandex-browser.*\\.desktop"
+
+pkg_pretend() {
+	# Protect against people using autounmask overzealously
+	use amd64 || die "${PN} only works on amd64"
+}
 
 pkg_setup() {
 	chromium_suid_sandbox_check_kernel_config
@@ -137,24 +86,45 @@ src_unpack() {
 }
 
 src_prepare() {
-	# this was here for a long time (from the first version of the ebuild),
-	# but now this prevents installing a symlink of the yandex-browser in /usr/bin
-	# and breaks .desktop files
-	#
-	# rm usr/bin/${PN} || die
+	rm "usr/bin/${PN}" || die "Failed to remove bundled wrapper"
 
-	rm -r etc || die
+	rm -r etc || die "Failed to remove etc"
 
-	rm -r "${YANDEX_HOME}/cron" || die
+	rm -r "${YANDEX_HOME}/cron" || die "Failed ro remove cron hook"
 
-	gunzip usr/share/doc/${PN}/changelog.gz || die
-	gunzip usr/share/man/man1/${PN}.1.gz || die
+	mv usr/share/doc/${PN} usr/share/doc/${PF} || die "Failed to move docdir"
 
-	mv usr/share/doc/${PN} usr/share/doc/${PF} || die
+	gunzip \
+		"usr/share/doc/${PF}/changelog.gz" \
+		"usr/share/man/man1/${PN}.1.gz" \
+	|| die "Failed to decompress docs"
 
-	pushd "${YANDEX_HOME}/locales" > /dev/null || die
-	chromium_remove_language_paks
+	pushd "${YANDEX_HOME}/locales" > /dev/null || die "Failed to cd into locales dir"
+		chromium_remove_language_paks
 	popd > /dev/null || die
+
+	if ! use qt5; then
+		rm "${YANDEX_HOME}/libqt5_shim.so" || die
+	fi
+	if ! use qt6; then
+		rm "${YANDEX_HOME}/libqt6_shim.so" || die
+	fi
+
+	grep '\<142\.[0-9]\+\.[0-9]\+\>' "${YANDEX_HOME}/update-ffmpeg" >/dev/null \
+		|| ewarn "Wrong ffmpeg version in ebuild!"
+
+	local crap=(
+		"${YANDEX_HOME}/xdg-settings"
+		"${YANDEX_HOME}/xdg-mime"
+		"${YANDEX_HOME}/update-ffmpeg"
+		"${YANDEX_HOME}/update_codecs"
+		"${YANDEX_HOME}/compiz.sh"
+	)
+
+	test -L "usr/share/man/man1/yandex-browser.1.gz" &&
+		crap+=("usr/share/man/man1/yandex-browser.1.gz")
+
+	rm ${crap[@]} || die "Failed to remove bundled crap"
 
 	default
 
@@ -164,48 +134,29 @@ src_prepare() {
 		-e 's|^TargetEnvironment|X-&|g' \
 		-i usr/share/applications/${PN}.desktop || die
 
-	patchelf --remove-rpath "${S}/${YANDEX_HOME}/yandex_browser-sandbox" || die "Failed to fix library rpath (yandex_browser-sandbox)"
+	patchelf --remove-rpath "${S}/${YANDEX_HOME}/yandex_browser-sandbox" || die "Failed to fix library rpath (sandbox)"
 	patchelf --remove-rpath "${S}/${YANDEX_HOME}/yandex_browser" || die "Failed to fix library rpath (yandex_browser)"
 	patchelf --remove-rpath "${S}/${YANDEX_HOME}/find_ffmpeg" || die "Failed to fix library rpath (find_ffmpeg)"
-
-	# Removed in 23.9.1.837-1
-	# patchelf --remove-rpath "${S}/${YANDEX_HOME}/nacl_helper" || die "Failed to fix library rpath (nacl_helper)"
 }
 
 src_install() {
 	mv * "${D}" || die
 	dodir "/usr/$(get_libdir)/${PN}/lib"
-	make_wrapper "${PN}" "./${PN}" "${EPREFIX}/${YANDEX_HOME}" "${EPREFIX}/usr/$(get_libdir)/${PN}/lib"
+	mv "${D}/usr/share/appdata" "${D}/usr/share/metainfo" || die
 
-	# yandex_browser binary loads libudev.so.0 at runtime
-	dosym "${EPREFIX}/usr/$(get_libdir)/libudev.so.0" "${EPREFIX}/usr/$(get_libdir)/${PN}/lib/libudev.so.0"
+	make_wrapper "${PN}" "./${PN}" "/${YANDEX_HOME}" "/usr/$(get_libdir)/${PN}/lib" \
+		|| die "Failed to make a wrapper"
 
-	keepdir "${EPREFIX}/${YANDEX_HOME}"
 	for icon in "${D}/${YANDEX_HOME}/product_logo_"*.png; do
 		size="${icon##*/product_logo_}"
 		size=${size%.png}
 		dodir "/usr/share/icons/hicolor/${size}x${size}/apps"
-		newicon -s "${size}" "$icon" "yandex-browser-beta.png"
+		newicon -s "${size}" "$icon" "${PN}.png"
 	done
 
-	fowners root:root "${EPREFIX}/${YANDEX_HOME}/yandex_browser-sandbox"
-	fperms 4711 "${EPREFIX}/${YANDEX_HOME}/yandex_browser-sandbox"
+	dosym ../../../usr/"$(get_libdir)"/chromium/libffmpeg.so."${FFMPEG_PV}" "${YANDEX_HOME}"/libffmpeg.so || die
+
+	fowners root:root "/${YANDEX_HOME}/yandex_browser-sandbox"
+	fperms 4711 "/${YANDEX_HOME}/yandex_browser-sandbox"
 	pax-mark m "${ED}${YANDEX_HOME}/yandex_browser-sandbox"
-}
-
-pkg_postinst() {
-	xdg_desktop_database_update
-	if use ffmpeg-codecs; then
-		# Not working now
-		# bash "/${YANDEX_HOME}/update-ffmpeg"
-
-		"/${YANDEX_HOME}/update_codecs" "/${YANDEX_HOME}"
-	else
-		ewarn "For a complete support for video and audio in the HTML5 format"
-		ewarn "see: https://yandex.ru/support/browser-beta/working-with-files/video.html#problems__video-linux"
-	fi
-}
-
-pkg_postrm() {
-	xdg_desktop_database_update
 }
