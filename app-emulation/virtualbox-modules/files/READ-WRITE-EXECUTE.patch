@@ -1,0 +1,24 @@
+--- a/vboxdrv/include/VBox/vmm/hm_vmx.h
++++ b/vboxdrv/include/VBox/vmm/hm_vmx.h
+494,495c494,495
+< #define VMX_BF_EPT_PT_READ_SHIFT                        0
+< #define VMX_BF_EPT_PT_READ_MASK                         UINT64_C(0x0000000000000001)
+---
+> #define VMX_BF_EPT_PT_VBOX_READ_SHIFT                   0
+> #define VMX_BF_EPT_PT_VBOX_READ_MASK                    UINT64_C(0x0000000000000001)
+497,498c497,498
+< #define VMX_BF_EPT_PT_WRITE_SHIFT                       1
+< #define VMX_BF_EPT_PT_WRITE_MASK                        UINT64_C(0x0000000000000002)
+---
+> #define VMX_BF_EPT_PT_VBOX_WRITE_SHIFT                  1
+> #define VMX_BF_EPT_PT_VBOX_WRITE_MASK                   UINT64_C(0x0000000000000002)
+500,501c500,501
+< #define VMX_BF_EPT_PT_EXECUTE_SHIFT                     2
+< #define VMX_BF_EPT_PT_EXECUTE_MASK                      UINT64_C(0x0000000000000004)
+---
+> #define VMX_BF_EPT_PT_VBOX_EXECUTE_SHIFT                2
+> #define VMX_BF_EPT_PT_VBOX_EXECUTE_MASK                 UINT64_C(0x0000000000000004)
+533c533
+<                             (READ, WRITE, EXECUTE, MEMTYPE, IGNORE_PAT, IGN_7, ACCESSED, DIRTY, EXECUTE_USER, IGN_59_11,
+---
+>                             (VBOX_READ, VBOX_WRITE, VBOX_EXECUTE, MEMTYPE, IGNORE_PAT, IGN_7, ACCESSED, DIRTY, EXECUTE_USER, IGN_59_11,

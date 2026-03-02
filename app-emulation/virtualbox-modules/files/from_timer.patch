@@ -1,0 +1,6 @@
+--- a/vboxdrv/r0drv/linux/timer-r0drv-linux.c
++++ b/vboxdrv/r0drv/linux/timer-r0drv-linux.c
+751c751
+<     PRTTIMERLNXSUBTIMER pSubTimer = from_timer(pSubTimer, pLnxTimer, u.Std.LnxTimer);
+---
+>     PRTTIMERLNXSUBTIMER pSubTimer = timer_container_of(pSubTimer, pLnxTimer, u.Std.LnxTimer);

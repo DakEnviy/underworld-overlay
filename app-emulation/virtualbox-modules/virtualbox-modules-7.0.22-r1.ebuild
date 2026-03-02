@@ -21,6 +21,12 @@ KEYWORDS="amd64"
 
 CONFIG_CHECK="~!SPINLOCK JUMP_LABEL"
 
+PATCHES=(
+	"${FILESDIR}"/READ-WRITE-EXECUTE.patch
+	"${FILESDIR}"/from_timer.patch
+	"${FILESDIR}"/${PN}-7.1.8-kernel-6.15.patch
+)
+
 src_compile() {
 	local modlist=( {vboxdrv,vboxnetflt,vboxnetadp}=misc )
 	local modargs=( KERN_DIR="${KV_OUT_DIR}" KERN_VER="${KV_FULL}" )
