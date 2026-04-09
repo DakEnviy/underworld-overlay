@@ -8,7 +8,7 @@ CHROMIUM_LANGS="cs de en-US es fr it ja kk pt-BR pt-PT ru tr uk uz zh-CN zh-TW"
 inherit chromium-2 unpacker desktop wrapper pax-utils xdg
 
 MY_PV="${PV/_rc/-}"
-FFMPEG_PV="142"
+FFMPEG_PV="144"
 
 DESCRIPTION="The web browser from Yandex"
 HOMEPAGE="https://browser.yandex.ru/beta/"
@@ -110,7 +110,7 @@ src_prepare() {
 		rm "${YANDEX_HOME}/libqt6_shim.so" || die
 	fi
 
-	grep '\<142\.[0-9]\+\.[0-9]\+\>' "${YANDEX_HOME}/update-ffmpeg" >/dev/null \
+	grep '\<'"$FFMPEG_PV"'\.[0-9]\+\.[0-9]\+\>' "${YANDEX_HOME}/update-ffmpeg" >/dev/null \
 		|| ewarn "Wrong ffmpeg version in ebuild!"
 
 	local crap=(
