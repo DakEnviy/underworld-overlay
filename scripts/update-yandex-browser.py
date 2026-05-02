@@ -2,29 +2,39 @@
 '''Script to update yandex-browser-beta ebuild file.
 
 Dependencies:
+    beautifulsoup4: For repository scrapping
+    packaging: For version parsing
     python-debian: For working with .deb packages
     requests: For HTTP requests
-    packaging: For version parsing
 '''
 
 import re
 import io
-import requests
 from pathlib import Path
-from packaging import version as pkg_version
 
 try:
     from bs4 import BeautifulSoup
 except ImportError:
     print('Error: beautifulsoup4 module not found. Install with: pip install beautifulsoup4')
-    raise
+    exit(1)
 
-# debian module required for .deb file handling
+try:
+    from packaging import version as pkg_version
+except ImportError:
+    print('Error: packaging module not found. Install with: pip install packaging')
+    exit(1)
+
+try:
+    import requests
+except ImportError:
+    print('Error: requests module not found. Install with: pip install requests')
+    exit(1)
+
 try:
     from debian import debfile
 except ImportError:
     print('Error: python-debian module not found. Install with: pip install python-debian')
-    raise
+    exit(1)
 
 SCRIPT_DIR = Path(__file__).parent.resolve()
 OVERLAY_DIR = SCRIPT_DIR.parent
@@ -104,16 +114,16 @@ def generate_ebuild(template_path: Path, ffmpeg_pv: str) -> str:
     return content
 
 
-def format_version(ver, separator):
+def format_version(ver: str, separator: str) -> str:
     '''Format version tuple with separator.'''
     return f'{ver[0]}{separator}{ver[1]}' if len(ver) > 1 else ver[0]
 
 
-def format_ebuild_version(ver):
+def format_ebuild_version(ver: str) -> str:
     return format_version(ver, '_rc')
 
 
-def format_deb_version(ver):
+def format_deb_version(ver: str) -> str:
     return format_version(ver, '-')
 
 
