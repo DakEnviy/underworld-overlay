@@ -3,22 +3,8 @@
 
 EAPI=8
 
-# To add a new Python here:
-# 1. Patch src/libs/xpcom18a4/python/Makefile.kmk (copy the previous impl's logic)
-#    Do NOT skip this part. It'll end up silently not-building the Python extension
-#    or otherwise misbehaving if you do.
-#
-# 2. Then update PYTHON_COMPAT & set PYTHON_SINGLE_TARGET for testing w/ USE=python.
-#
-#  May need to look at other distros (e.g. Arch Linux) to find patches for newer
-#  Python versions as upstream tends to lag. Upstream may have patches on their
-#  trunk branch but not release branch.
-#
-#  See bug #785835, bug #856121.
-PYTHON_COMPAT=( python3_{10..11} )
-
 inherit desktop edo flag-o-matic java-pkg-opt-2 linux-info multilib optfeature pax-utils \
-	python-single-r1 tmpfiles toolchain-funcs udev xdg
+	tmpfiles toolchain-funcs udev xdg
 
 MY_PN="VirtualBox"
 MY_P=${MY_PN}-${PV}
@@ -35,7 +21,7 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 LICENSE="GPL-2+ GPL-3 LGPL-2.1 MIT dtrace? ( CDDL )"
 SLOT="0/$(ver_cut 1-2)"
 KEYWORDS="amd64"
-IUSE="alsa dbus debug doc dtrace +gui java lvm nls pam pch pulseaudio +opengl python +sdk +sdl test +udev vboxwebsrv vde +vmmraw vnc"
+IUSE="alsa dbus debug doc dtrace +gui java lvm nls pam pch pulseaudio +opengl +sdk +sdl test +udev vboxwebsrv vde +vmmraw vnc"
 RESTRICT="!test? ( test )"
 
 unset WATCOM #856769
@@ -72,7 +58,6 @@ COMMON_DEPEND="
 		x11-libs/libXt
 	)
 	pam? ( sys-libs/pam )
-	python? ( ${PYTHON_DEPS} )
 	sdl? (
 		media-libs/libsdl2[X,video]
 		x11-libs/libX11
@@ -150,14 +135,6 @@ BDEPEND="
 	gui? ( dev-qt/linguist-tools:5 )
 	nls? ( dev-qt/linguist-tools:5 )
 	java? ( virtual/jdk:1.8 )
-	python? (
-		${PYTHON_DEPS}
-		test? (
-			$(python_gen_cond_dep '
-				dev-python/pytest[${PYTHON_USEDEP}]
-			')
-		)
-	)
 "
 
 QA_FLAGS_IGNORED="
@@ -192,7 +169,6 @@ QA_PRESTRIPPED="
 
 REQUIRED_USE="
 	java? ( sdk )
-	python? ( sdk ${PYTHON_REQUIRED_USE} )
 	vboxwebsrv? ( java )
 "
 
@@ -229,17 +205,10 @@ pkg_pretend() {
 
 pkg_setup() {
 	java-pkg-opt-2_pkg_setup
-	use python && python-single-r1_pkg_setup
 }
 
 src_prepare() {
 	default
-
-	if use python; then
-		mkdir test
-		cp "${FILESDIR}"/test_python.py test/
-		python_fix_shebang test/test_python.py
-	fi
 
 	# Only add nopie patch when we're on hardened
 	if gcc-specs-pie; then
@@ -366,6 +335,7 @@ src_configure() {
 		--with-g++="$(tc-getCXX)"
 
 		--disable-kmods
+		--disable-python
 
 		$(usev !alsa --disable-alsa)
 		$(usev !dbus --disable-dbus)
@@ -374,7 +344,6 @@ src_configure() {
 		$(usev !java --disable-java)
 		$(usev !lvm --disable-devmapper)
 		$(usev !pulseaudio --disable-pulse)
-		$(usev !python --disable-python)
 		$(usev vboxwebsrv --enable-webservice)
 		$(usev vde --enable-vde)
 		$(usev !vmmraw --disable-vmmraw)
@@ -408,34 +377,9 @@ src_configure() {
 		-e '/VBOX_LIB_PYTHON.*=/d' \
 		AutoConfig.kmk || die
 
-	if use python; then
-		cat >> AutoConfig.kmk <<-EOF || die
-			VBOX_WITH_PYTHON=$(usev python 1)
-			VBOX_PATH_PYTHON_INC=$(python_get_includedir)
-			VBOX_LIB_PYTHON=$(python_get_library_path)
-		EOF
-
-		local mangled_python="${EPYTHON#python}"
-		mangled_python="${mangled_python/.}"
-
-		# Stub out the script which defines what the Makefile ends up
-		# building for. gen_python_deps.py gets called by the Makefile
-		# with some args and it spits out a bunch of paths for a hardcoded
-		# list of Pythons. We just override it with what we're actually using.
-		# This minimises the amount of patching we have to do for new Pythons.
-		cat > src/libs/xpcom18a4/python/gen_python_deps.py <<-EOF || die
-			print("VBOX_PYTHON${mangled_python}_INC=$(python_get_includedir)")
-			print("VBOX_PYTHON${mangled_python}_LIB=$(python_get_library_path)")
-			print("VBOX_PYTHONDEF_INC=$(python_get_includedir)")
-			print("VBOX_PYTHONDEF_LIB=$(python_get_library_path)")
-		EOF
-
-		chmod +x src/libs/xpcom18a4/python/gen_python_deps.py || die
-	else
-		cat >> AutoConfig.kmk <<-EOF || die
-			VBOX_WITH_PYTHON:=
-		EOF
-	fi
+	cat >> AutoConfig.kmk <<-EOF || die
+		VBOX_WITH_PYTHON:=
+	EOF
 }
 
 src_compile() {
@@ -502,12 +446,7 @@ src_compile() {
 }
 
 src_test() {
-	if use python; then
-		local -x VBOX_PROGRAM_PATH="${S}"/out/linux.${ARCH}/$(usex debug debug release)/bin
-		local -x VBOX_SDK_PATH="${VBOX_PROGRAM_PATH}"/sdk
-		local -x PYTHONPATH="${VBOX_SDK_PATH}"/installer
-		LD_LIBRARY_PATH="${VBOX_PROGRAM_PATH}" epytest test/
-	fi
+	:
 }
 
 src_install() {
@@ -702,32 +641,6 @@ src_install() {
 	elif use gui; then
 		dodoc "${WORKDIR}"/${PN}-help-${PV}/UserManual.q{ch,hc}
 		docompress -x /usr/share/doc/${PF}
-	fi
-
-	if use python; then
-		local python_path_ext="${ED}/usr/$(get_libdir)/virtualbox/VBoxPython3.so"
-		if [[ ! -x "${python_path_ext}" ]]; then
-			eerror "Couldn't find ${python_path_ext}! Bindings were requested with USE=python"
-			eerror "but none were installed. This may happen if support for a Python target"
-			eerror "(listed in PYTHON_COMPAT in the ebuild) is incomplete within the Makefiles."
-			die "Incomplete installation of Python bindings! File a bug with Gentoo!"
-		fi
-
-		# 378871
-		local installer_dir="${ED}/usr/$(get_libdir)/virtualbox/sdk/installer"
-		pushd "${installer_dir}" &> /dev/null || die
-		sed -e "s;%VBOX_INSTALL_PATH%;${vbox_inst_path};" \
-			-e "s;%VBOX_SDK_PATH%;${vbox_inst_path}/sdk;" \
-			-i vboxapi/__init__.py || die
-		# insert shebang, the files come without one
-		find vboxapi -name \*.py -exec sed -e "1 i\#! ${PYTHON}" -i {} \+ || die
-		python_domodule vboxapi
-		popd &> /dev/null || die
-		sed -e "1 i\#! ${PYTHON}" -i vboxshell.py || die
-		python_doscript vboxshell.py
-
-		# do not install the installer
-		rm -r "${installer_dir}" || die
 	fi
 
 	newtmpfiles "${FILESDIR}"/${PN}-vboxusb_tmpfilesd ${PN}-vboxusb.conf
