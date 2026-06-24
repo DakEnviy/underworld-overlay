@@ -20,7 +20,7 @@ SRC_URI="
 
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="+ffmpeg-codecs qt5 qt6"
+IUSE="+ffmpeg-codecs qt6"
 RESTRICT="bindist mirror strip"
 
 BDEPEND="
@@ -55,11 +55,6 @@ RDEPEND="
 	x11-misc/xdg-utils
 	ffmpeg-codecs? ( media-video/ffmpeg-chromium:${FFMPEG_PV} )
 	sys-libs/libudev-compat
-	qt5? (
-		dev-qt/qtcore:5
-		dev-qt/qtgui:5[X]
-		dev-qt/qtwidgets:5
-	)
 	qt6? (
 		dev-qt/qtbase:6[gui,widgets]
 	)
@@ -103,9 +98,8 @@ src_prepare() {
 		chromium_remove_language_paks
 	popd > /dev/null || die
 
-	if ! use qt5; then
-		rm "${YANDEX_HOME}/libqt5_shim.so" || die
-	fi
+	# rm "${YANDEX_HOME}/libqt5_shim.so" || die
+
 	if ! use qt6; then
 		rm "${YANDEX_HOME}/libqt6_shim.so" || die
 	fi
