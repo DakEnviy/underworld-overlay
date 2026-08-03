@@ -8,7 +8,7 @@ CHROMIUM_LANGS="cs de en-US es fr it ja kk pt-BR pt-PT ru tr uk uz zh-CN zh-TW"
 inherit chromium-2 unpacker desktop wrapper pax-utils xdg
 
 MY_PV="${PV/_rc/-}"
-FFMPEG_PV="144"
+FFMPEG_PV="149"
 
 DESCRIPTION="The web browser from Yandex"
 HOMEPAGE="https://browser.yandex.ru/beta/"
@@ -108,15 +108,13 @@ src_prepare() {
 		|| ewarn "Wrong ffmpeg version in ebuild!"
 
 	local crap=(
-		"${YANDEX_HOME}/xdg-settings"
-		"${YANDEX_HOME}/xdg-mime"
 		"${YANDEX_HOME}/update-ffmpeg"
 		"${YANDEX_HOME}/update_codecs"
 		"${YANDEX_HOME}/compiz.sh"
 	)
 
-	test -L "usr/share/man/man1/yandex-browser.1.gz" &&
-		crap+=("usr/share/man/man1/yandex-browser.1.gz")
+	# test -L "usr/share/man/man1/yandex-browser.1.gz" &&
+	# 	crap+=("usr/share/man/man1/yandex-browser.1.gz")
 
 	rm ${crap[@]} || die "Failed to remove bundled crap"
 
