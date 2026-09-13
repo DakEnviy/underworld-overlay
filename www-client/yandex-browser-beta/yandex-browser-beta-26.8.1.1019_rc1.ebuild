@@ -8,7 +8,7 @@ CHROMIUM_LANGS="cs de en-US es fr it ja kk pt-BR pt-PT ru tr uk uz zh-CN zh-TW"
 inherit chromium-2 unpacker desktop wrapper pax-utils xdg
 
 MY_PV="${PV/_rc/-}"
-FFMPEG_PV="149"
+FFMPEG_PV="150"
 
 DESCRIPTION="The web browser from Yandex"
 HOMEPAGE="https://browser.yandex.ru/beta/"
